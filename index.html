@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    color: #ff4b5c;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Container */
+.container {
+    position: relative;
+    top: 15%;
+    background: white;
+    padding: 30px;
+    margin: auto;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+h1 {
+    color: #ff4b5c;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: #ff4b5c;
+    color: white;
+}
+
+#noBtn {
+    background-color: #ccc;
+}
+
+#gift {
+    font-size: 60px;
+    display: none;
+    cursor: pointer;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+#letter {
+    display: none;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Cute emojis decorations */
+.decor {
+    position: absolute;
+    font-size: 40px;
+}
+
+.bear { bottom: 10px; left: 20px; }
+.cat { bottom: 10px; right: 20px; }
+.butterfly1 { top: 10px; left: 20px; }
+.butterfly2 { top: 20px; right: 30px; }
+
+</style>
+</head>
+
+<body>
+
+<!-- Decorations -->
+<div class="decor bear">🐻</div>
+<div class="decor cat">🐱</div>
+<div class="decor butterfly1">🦋</div>
+<div class="decor butterfly2">🦋</div>
+
+<div class="container">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 😢</button>
+
+    <div id="gift">🎁</div>
+
+    <div id="letter">
+        <h2>My Love 💌</h2>
+        <p>
+            You are the most beautiful part of my life.  
+            Like butterflies in my heart 🦋  
+            Like a teddy bear I want to hug forever 🐻  
+            Like a cute little cat I adore 🐱  
+            I promise to love you more every single day.  
+            Happy Valentine’s Day my love ❤️
+        </p>
+    </div>
+</div>
+
+<script>
+let yesBtn = document.getElementById("yesBtn");
+let noBtn = document.getElementById("noBtn");
+let gift = document.getElementById("gift");
+let letter = document.getElementById("letter");
+
+let size = 18;
+
+noBtn.addEventListener("click", function() {
+    size += 10;
+    yesBtn.style.fontSize = size + "px";
+    yesBtn.style.padding = (size/2) + "px " + size + "px";
+});
+
+yesBtn.addEventListener("click", function() {
+    noBtn.style.display = "none";
+    yesBtn.style.display = "none";
+    gift.style.display = "block";
+});
+
+gift.addEventListener("click", function() {
+    gift.style.display = "none";
+    letter.style.display = "block";
+});
+
+/* Floating hearts generator */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
